@@ -29,10 +29,10 @@ def merge(left,right):
 				res.append(right[ir])
 				ir++
 		elif il < len(left):
-			res.append(left[range(il,len(left)-1] # gotta check on this
+			res.extend(left[range(il,len(left)-1] # gotta check on this
 			il = len(left)
-		elif ir < len(right):
-			res.append(right[range(ir,len(right)-1]
+		else ir < len(right):
+			res.extend(right[range(ir,len(right)-1]
 			ir = len(right)
 	return res
 
