@@ -17,6 +17,7 @@ def qsort(list):
 
     return qsort(less) + equal + qsort(greater)
 
+# mergesort not working at the moment. will fix later.
 def mymerge(left,right):
 	res=[]
 	il,ir = 0,0
@@ -79,7 +80,7 @@ if __name__ == "__main__":
 	t0 = time.clock()
 	for i in range(0,ftimes):
 		sorted = d
-#		e = qsort(sorted)
-		e = merge_sort(sorted)
+		e = qsort(sorted)
+#		e = merge_sort(sorted)
 		if not(i%100000):
 			print e,time.clock()-t0
