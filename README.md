@@ -33,7 +33,7 @@ Mark-Essels-iMac:py-qsort messel$ pypy qsort.py
 [0, 2, 4, 4.3, 5.5, 8, 9, 11.6, 77.4, 112] 3.117207
 </pre>
 
-pypy 1.5a with mergesort
+pypy 1.5a with mergesort, <strong>Fail</strong> I didn't see the error in the outputs.
 <pre>
 Mark-Essels-iMac:py-util messel$ pypy sort.py 
 [0, 11.6, 2, 4.3, 5.5, 9, 112, 8, 77.4, 4] 0.000294
