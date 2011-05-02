@@ -32,6 +32,15 @@ def merge(left, right):
     result += right[j:]
     return result
 
+def cleaner_mergesort(list):
+    if len(list) < 2:
+        return list
+    else:
+        middle = len(list) / 2
+        left = mergesort(list[:middle])
+        right = mergesort(list[middle:])
+        return merge(left, right)
+
 	
 def merge_sort(lst):
 	if len(lst) <= 1:
