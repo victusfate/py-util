@@ -17,43 +17,65 @@ def qsort(list):
 
     return qsort(less) + equal + qsort(greater)
 
-def merge(left,right):
+def mymerge(left,right):
 	res=[]
-	il=0,ir=0
-	while (il < len(left)) or (ir < len(right)):
-		if (il < len(left)) and (ir < len(right)):
+	il,ir = 0,0
+	while il < len(left) or ir < len(right):
+		print il,ir
+		if il < len(left) and ir < len(right):
 			if left[il] <= right[ir]:
 				res.append(left[il])
-				il++
+				il=il+1
 			else:
 				res.append(right[ir])
-				ir++
+				ir=ir+1
 		elif il < len(left):
-			res.extend(left[range(il,len(left)-1]) # gotta check on this
+			res.extend(left[il:len(left)]) # gotta check on this
 			il = len(left)
-		else ir < len(right):
-			res.extend(right[range(ir,len(right)-1])
+		elif ir < len(right):
+			res.extend(right[ir:len(right)])
 			ir = len(right)
+		print il,ir
+		
 	return res
-
-def merge_sort(list):
-	if len(list) <= 1:
-		return list
+	
+def merge(left, right):
+	result = []
+	while len(left) or len(right):
+		if len(left) and len(right):
+			if left[0] <= right[0]:
+				result.append(left[0])
+				left = left[1:]
+			else:
+				result.append(right[0])
+				right = right[1:]
+		elif len(left):
+			result.append(left[0])
+			left = left[1:]
+		elif len(right):
+			result.append(right[0])
+			right = right[1:]
+	return result
+	
+def merge_sort(lst):
+	if len(lst) <= 1:
+		return lst
 	else:
-		l = len(list)
-		imid = len(list)/2
-		mid = list[imid]
+		l = len(lst)
+		imid = len(lst)/2
+		mid = lst[imid]
 		left, right = [], []
 		for i in range(0,l):
 			if i <= imid:
-				left.append(list[i])
+				left.append(lst[i])
 			elif i > imid:
-				right.append(list[i])
-	return merge(merge_sort(left) + merge_sort(right))
+				right.append(lst[i])
+	return merge(merge_sort(left),merge_sort(right))
 
 if __name__ == "__main__":
 	d = [0,11.6,2,4.3,5.5,9,112,8,77.4,4]
-	ftimes = 1000000
+#	ftimes = 1000000
+	ftimes = 1
 	t0 = time.clock()
 	for i in range(0,ftimes):
 		sorted = d
@@ -61,4 +83,3 @@ if __name__ == "__main__":
 		e = merge_sort(sorted)
 		if not(i%100000):
 			print e,time.clock()-t0
-		
